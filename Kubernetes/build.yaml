@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  roles:
+    - common
+  tags:
+    - common
+    - install
+
+- hosts: master
+  become: true
+  become_method: sudo
+  roles:
+    - master
+  tags:
+    - master
+    - configure
+
+- hosts: nodes
+  become: true
+  become_method: sudo
+  roles:
+    - nodes
+  tags:
+    - nodes
+    - configure

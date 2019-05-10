@@ -1,0 +1,23 @@
+# /roles/nodes/tasks/main.yaml
+- name: Node Tasks
+  debug:
+    msg: "These are node tasks"
+  tags:
+    - never
+    - debug
+
+- name:  Setup kubelet environment files
+  command: /vagrant/scripts/extra.sh
+
+- name: Copy the join command to server location
+  copy:
+    src: join-command
+    dest: /tmp/join-command.sh
+    mode: 0777
+  tags:
+    - always
+
+- name: Join the node to cluster
+  command: sh /tmp/join-command.sh
+  tags:
+    - always
