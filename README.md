@@ -1,2 +1,2 @@
-# templates
-Template codes
+# Deployment Templates
+Vagrant template codes for local development
